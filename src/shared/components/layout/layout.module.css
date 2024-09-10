@@ -1,0 +1,9 @@
+.main {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+}

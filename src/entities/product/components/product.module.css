@@ -1,0 +1,38 @@
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.tag {
+  padding: 5px 12px;
+  border: 2px solid var(--light);
+}
+
+.card {
+  border: 2px solid var(--black);
+  padding: 10px 20px;
+  flex: 0 1 25%;
+  max-width: 250px;
+  position: relative;
+  z-index: 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actions {
+  &:hover {
+    background: green;
+  }
+}
+
+.favorite {
+  cursor: pointer;
+}
+
+.deleteBtn {
+  width: fit-content;
+}

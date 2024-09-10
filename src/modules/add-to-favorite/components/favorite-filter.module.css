@@ -1,0 +1,14 @@
+.btns {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.main {
+  margin: 24px 0;
+}
+
+.favorite {
+  cursor: pointer;
+  width: fit-content;
+}

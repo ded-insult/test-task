@@ -1,0 +1,11 @@
+.pages {
+  display: flex;
+  justify-content: center;
+
+  margin: 24px 0;
+  gap: 12px;
+
+  > div {
+    cursor: pointer;
+  }
+}

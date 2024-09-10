@@ -1,0 +1,10 @@
+.cards {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.favorite {
+  cursor: pointer;
+}
