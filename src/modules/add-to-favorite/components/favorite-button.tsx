@@ -4,8 +4,10 @@ import { useAppDispatch } from '@/shared/utils/hooks/use-app-dispatch';
 import { useAppSelector } from '@/shared/utils/hooks/use-app-selector';
 
 import { favoriteActions } from '../store/slice';
+import { favoriteList } from '../store/selectors';
 
 import s from './favorite-filter.module.css';
+import { productList } from '@/entities/product/store/selectors';
 
 interface Props {
   _id: string;
@@ -13,9 +15,10 @@ interface Props {
 
 export const FavoriteButton = memo(function FavoriteButton(props: Props) {
   const { _id } = props;
+
   const dispatch = useAppDispatch();
-  const cats = useAppSelector((state) => state.product?.data || []);
-  const fav = useAppSelector((state) => state.favoriteToggle.favorites);
+  const cats = useAppSelector(productList);
+  const favorite = useAppSelector(favoriteList);
 
   const catById = cats?.find((cat) => cat._id === _id);
 
@@ -23,7 +26,7 @@ export const FavoriteButton = memo(function FavoriteButton(props: Props) {
     dispatch(favoriteActions.toggleFavorite(catById!));
   };
 
-  const likeStatus = fav.some((cat) => cat._id === catById?._id)
+  const likeStatus = favorite.some((cat) => cat._id === catById?._id)
     ? 'лайкнуто'
     : 'лайкнуть';
 

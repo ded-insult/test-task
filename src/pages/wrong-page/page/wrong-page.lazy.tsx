@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 
 import { Loader } from '@/shared/components/loader/loader';
 
-export const WrongPageChunk = lazy(() => import('./wrong-page'));
+const WrongPageChunk = lazy(() => import('./wrong-page'));
 
 export function WrongPageLazy() {
   return (

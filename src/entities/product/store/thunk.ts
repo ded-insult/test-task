@@ -8,8 +8,7 @@ export const fetchProductsData = createAsyncThunk<Product[], void>(
   'fetch cats',
   async (_, thunkApi) => {
     const page = (state: RootState) => state.pagination.page;
-
-    const skipCount = page(thunkApi.getState() as any);
+    const skipCount = page(thunkApi.getState() as RootState);
 
     try {
       const data = await fetch(

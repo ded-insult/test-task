@@ -3,6 +3,7 @@ import { PRODUCT_PER_PAGE } from '@/shared/utils/constants/product-per-page';
 import { useAppSelector } from '@/shared/utils/hooks/use-app-selector';
 
 import { paginationAction } from '../store/slice';
+import { currentPage } from '../store/selectors';
 
 import s from './pagination.module.css';
 
@@ -13,7 +14,7 @@ interface Props {
 export function Pagination(props: Props) {
   const { pages } = props;
   const dispatch = useAppDispatch();
-  const page = useAppSelector((state) => state.pagination.page);
+  const page = useAppSelector(currentPage);
 
   const selectPage = (page: number) => () => {
     dispatch(paginationAction.setPage(page));

@@ -5,3 +5,5 @@ export { ProductDeleteButton } from './components/product-delete-button';
 export { SearchProduct } from './components/search-product';
 
 export type { Product as IProduct } from './types/types';
+
+export * from './store/selectors';

@@ -1,33 +1,38 @@
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import { fetchProductsData, Product } from '@/entities/product';
-import type { IProduct } from '@/entities/product';
-import { FavoriteButton } from '@/modules/add-to-favorite';
+import {
+  errorMessage,
+  loadingStatus,
+  productList,
+  searchValue,
+  fetchProductsData,
+  Product,
+  ProductDeleteButton,
+} from '@/entities/product';
+import {
+  favoriteCatsList,
+  filterOnlyFavorite,
+  FavoriteButton,
+} from '@/modules/add-to-favorite';
 import { useAppDispatch } from '@/shared/utils/hooks/use-app-dispatch';
 import { useAppSelector } from '@/shared/utils/hooks/use-app-selector';
 import { Loader } from '@/shared/components/loader/loader';
-import { ProductDeleteButton } from '@/entities/product';
+import { currentPage } from '@/entities/pagination';
+import type { IProduct } from '@/entities/product';
 
 import s from './cats.module.css';
 
 export function CatsList() {
   const [_, setParam] = useSearchParams();
-
   const dispatch = useAppDispatch();
-  const cats = useAppSelector(
-    (state) => state.product?.data || ([] as IProduct[])
-  );
-  const showOnlyFavorite = useAppSelector(
-    (state) => state.favoriteToggle.filterOnlyFavorite
-  );
-  const favoriteCats = useAppSelector(
-    (state) => state.favoriteToggle.favorites
-  );
-  const isError = useAppSelector((state) => state.product?.error || null);
-  const isLoading = useAppSelector((state) => state.product.isLoading);
-  const page = useAppSelector((state) => state.pagination.page);
-  const searchvalue = useAppSelector((state) => state.product.searchValue);
+  const cats = useAppSelector(productList);
+  const showOnlyFavorite = useAppSelector(filterOnlyFavorite);
+  const favoriteCats = useAppSelector(favoriteCatsList);
+  const isError = useAppSelector(errorMessage);
+  const isLoading = useAppSelector(loadingStatus);
+  const page = useAppSelector(currentPage);
+  const searchvalue = useAppSelector(searchValue);
 
   const filterByTagCats = cats.filter((cat) =>
     cat.tags.some((tag) =>
