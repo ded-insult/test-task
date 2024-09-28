@@ -9,14 +9,16 @@ interface State {
   isLoading: boolean;
   error: unknown;
   page: number;
-  data?: PaginationCount;
+  data: PaginationCount;
 }
 
 const initialState: State = {
   isLoading: false,
   page: 1,
   error: undefined,
-  data: {} as PaginationCount,
+  data: {
+    count: 0,
+  },
 };
 
 export const paginationSlice = createSlice({

@@ -2,15 +2,15 @@ import { Product } from '@/entities/product/types/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface State {
-  id: string[];
+  ids: string[];
   favorites: Product[];
-  filterOnlyFavorite: boolean;
+  isFilterOnlyFavorite: boolean;
 }
 
 const initialState: State = {
-  id: [],
+  ids: [],
   favorites: [],
-  filterOnlyFavorite: false,
+  isFilterOnlyFavorite: false,
 };
 
 export const toggleFavoriteSice = createSlice({
@@ -22,16 +22,17 @@ export const toggleFavoriteSice = createSlice({
 
       const changeFavoriteList = () => {
         return isFavorite
-          ? (state.favorites = state.favorites.filter((cat) => cat._id !== payload._id))
+          ? (state.favorites = state.favorites.filter(
+              (cat) => cat._id !== payload._id
+            ))
           : state.favorites.push(payload);
       };
 
       changeFavoriteList();
-
     },
 
     showOnlyFavorite: (state, { payload }: PayloadAction<boolean>) => {
-      state.filterOnlyFavorite = payload;
+      state.isFilterOnlyFavorite = payload;
     },
   },
 });

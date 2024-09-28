@@ -17,7 +17,7 @@ export interface AddProduct {
 
 const initialState: State = {
   isLoading: false,
-  data: undefined,
+  data: [],
   searchValue: '',
   error: undefined,
 };
