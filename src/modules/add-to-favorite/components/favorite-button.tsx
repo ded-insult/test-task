@@ -2,12 +2,12 @@ import { memo } from 'react';
 
 import { useAppDispatch } from '@/shared/utils/hooks/use-app-dispatch';
 import { useAppSelector } from '@/shared/utils/hooks/use-app-selector';
+import { productList } from '@/entities/product/store/selectors';
 
 import { favoriteActions } from '../store/slice';
 import { favoriteList } from '../store/selectors';
 
 import s from './favorite-filter.module.css';
-import { productList } from '@/entities/product/store/selectors';
 
 interface Props {
   _id: string;
